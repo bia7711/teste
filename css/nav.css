@@ -1,0 +1,32 @@
+body{
+    font-family: 'Segoe UI', sans-serif;
+}
+
+nav {
+    background-color: rgba(187, 183, 180, 0.438);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align:left;
+    display: flex;
+    
+}
+ 
+nav ul a {
+    color: black;
+    margin: 0 20px;
+
+}
+
+nav img {
+    height: 80px;
+    width: auto;
+}

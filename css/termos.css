@@ -1,0 +1,52 @@
+
+body {
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    background-image: url("../img/planodefundo.png");
+    background-repeat: no-repeat;
+    background-size:cover; 
+    background-position:center; 
+    backdrop-filter: blur(1.5px);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1, h2 {
+    color: #45610e;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+h2 {
+    margin-top: 20px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+p {
+    margin-bottom: 15px;
+}
+ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+li {
+    margin-bottom: 5px;
+}
+a {
+    color:#45610e;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}

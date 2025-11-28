@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Tempo de Florescer</title>
+    <link rel="stylesheet" href="./voluntarios.css"> 
+    <link rel="stylesheet" href="./perfil.css"> 
+</head>
+<body>
+
+    <header class="header">
+        <nav>
+            <div>
+                <img src="./img/novalogo.png" alt="Logo da organização"> 
+            </div>
+            <div id="navContainer" class="alinhamento"></div>
+        </nav>
+    </header>
+    <main class="profile-main">
+        <div class="profile-container">
+
+            <section class="profile-details">
+                <h2>Meus Dados Cadastrais</h2>
+                <div id="profileData" class="data-card">
+                    <p><strong>Nome Completo:</strong> <span id="data-name">Carregando...</span></p>
+                    <p><strong>E-mail:</strong> <span id="data-email">Carregando...</span></p>
+                    <p><strong>Telefone:</strong> <span id="data-phone">Carregando...</span></p>
+                    <p><strong>Cidade:</strong> <span id="data-city">Carregando...</span></p>
+                    <p><strong>Habilidades:</strong> <span id="data-skills">Carregando...</span></p>
+                    <button id="btnEditProfile" class="btn-edit">Editar Dados</button>
+                </div>
+            </section>
+
+            <section class="applications-list">
+                <h2>Minhas Candidaturas para Voluntariado</h2>
+                <div id="applicationsContainer" class="applications-cards">
+                    <p id="loadingApplications">Carregando candidaturas...</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="./perfil.js"></script> 
+</body>
+</html>

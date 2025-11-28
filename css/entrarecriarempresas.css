@@ -1,0 +1,192 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('../img/planodefundo.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    overflow: auto; 
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    margin: 20px auto; 
+}
+
+.header {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.header h1 {
+    color: #28a745;
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.header nav ul li {
+    margin: 0 10px;
+}
+
+.header nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.header nav ul li a:hover,
+.header nav ul li a.active {
+    background-color: #28a745;
+    color: white;
+}
+
+.form-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.form-header {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+
+
+.form-header h2 {
+    color: #333;
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    width: calc(100% - 20px); 
+    padding: 12px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; 
+}
+
+.input-group input[type="text"]:focus,
+.input-group input[type="email"]:focus,
+.input-group input[type="password"]:focus {
+    border-color: #28a745;
+    outline: none;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+}
+
+.btn-register {
+    background-color: #28a745;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-register:hover {
+    background-color: #218838;
+}
+
+.form-footer {
+    margin-top: 25px;
+    font-size: 0.9em;
+}
+
+.form-footer p {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.form-footer a {
+    color: #28a745;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+    color: #021b07;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header nav ul {
+        margin-top: 15px;
+        flex-direction: column;
+    }
+
+    .header nav ul li {
+        margin: 5px 0;
+    }
+
+    .form-header h2 {
+        font-size: 1.3em;
+    }
+
+    .input-group input {
+        padding: 10px;
+    }
+
+    .btn-register {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}

@@ -1,0 +1,361 @@
+/* --- 1. VARIÁVEIS E RESET BÁSICO --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Paleta de Cores de Alto Contraste */
+    --cor-principal: #1B5E20; /* Verde Floresta (mais profundo e forte) */
+    --cor-destaque: #66BB6A;  /* Verde Folha (vibrante para links e ícones) */
+    --cor-fundo-suave: #F0FFF0; /* Fundo suave geral (Quase branco, mas não puro) */
+    --cor-texto: #333333;
+    --branco: #ffffff;
+    --sombra-leve: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    background-color: var(--branco); 
+    color: var(--cor-texto);
+    font-family: 'Open Sans', Arial, sans-serif; 
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Tipografia */
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700;
+    color: var(--cor-principal);
+}
+
+strong {
+    font-weight: 700;
+    color: var(--cor-destaque);
+}
+
+/* --- ESTILO DO HEADER (O seu "quadrado esticado" com o título) --- */
+header {
+    width: 100%; /* LARGURA TOTAL */
+    padding: 20px 20px; /* BOM ESPAÇO INTERNO/ALTURA */
+    background-color: var(--cor-fundo-suave); /* Fundo suave para contraste */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); 
+    text-align: center; /* CENTRALIZA o título */
+}
+
+header h1 {
+    font-size: 3em; /* Título bem grande e visível */
+    margin: 0;
+    color: var(--cor-principal);
+}
+
+/* Estilos de Layout Full Width (Reutilizável) */
+main {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.full-width-section {
+    width: 100%;
+    padding: 60px 0;
+}
+
+.content-wrapper {
+    max-width: 1100px; /* Limite do conteúdo interno */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Títulos das Seções (H2) */
+h2 {
+    font-size: 2.2em; 
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px; 
+    height: 4px; 
+    background-color: var(--cor-destaque); 
+    margin: 10px auto 0 auto; 
+    border-radius: 2px;
+}
+
+p {
+    font-size: 1.1em; 
+    max-width: 900px; 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+/* --- 2. SEÇÃO 1: BANNER DE IMAGEM --- */
+.banner-imagem-destaque {
+    padding: 0; 
+    height: 450px; 
+    overflow: hidden; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.banner-imagem-destaque img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* --- 3. SEÇÃO 2: HISTÓRIA E JORNADA (Grid Cronológico) --- */
+.história-jornada {
+    background-color: var(--branco);
+}
+
+.história-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.história-item {
+    padding: 25px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: var(--sombra-leve);
+    transition: transform 0.3s ease;
+}
+
+.história-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.história-item i {
+    font-size: 3em;
+    color: var(--cor-destaque);
+    margin-bottom: 15px;
+}
+
+.história-item h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.história-item p {
+    text-align: center;
+    font-size: 0.95em;
+    max-width: none;
+}
+
+
+/* --- 4. SEÇÃO 3: IMPACTO E VALORES (Alternância com Imagens) --- */
+.impacto-valores {
+    background-color: var(--cor-fundo-suave); 
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.valor-row {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin: 60px 0;
+}
+
+.valor-row.reverse-row {
+    flex-direction: row-reverse;
+}
+
+.valor-texto {
+    flex: 1 1 50%;
+    text-align: left;
+}
+
+.valor-texto h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.valor-texto i {
+    color: var(--cor-destaque);
+    margin-right: 10px;
+}
+
+.valor-imagem {
+    flex: 1 1 50%;
+}
+
+.valor-imagem img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: var(--sombra-leve);
+}
+
+.saiba-mais {
+    display: inline-block;
+    color: var(--cor-destaque);
+    font-weight: 600;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.saiba-mais:hover {
+    color: var(--cor-principal);
+    text-decoration: underline;
+}
+
+/* --- 5. COMO AGIMOS: VOLUNTÁRIOS E EMPRESAS (Novo Bloco) --- */
+.como-agimos {
+    background-color: var(--branco); 
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.info-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.info-card {
+    flex: 1;
+    background-color: var(--cor-fundo-suave); 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--sombra-leve);
+    text-align: left;
+    border-left: 5px solid var(--cor-destaque);
+}
+
+.info-card h3 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    color: var(--cor-principal);
+}
+
+.info-card i {
+    color: var(--cor-destaque);
+    margin-right: 8px;
+}
+
+.info-card p {
+    font-size: 1em;
+    margin-bottom: 20px;
+    max-width: none;
+}
+
+
+/* --- 6. SEÇÃO 4: PROJETOS E CHAMADA PARA AÇÃO FINAL --- */
+.cta-final-projetos {
+    background-color: var(--cor-fundo-suave); 
+    color: var(--cor-texto);
+    text-align: center;
+    padding: 80px 0;
+    border-top: 5px solid var(--cor-destaque);
+}
+
+.cta-final-projetos h2 {
+    color: var(--cor-principal); 
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.cta-final-projetos p {
+    color: var(--cor-texto);
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-final-projetos h2::after {
+    background-color: var(--cor-destaque);
+}
+
+.cta-botoes button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Botão principal (Doação) */
+.cta-principal {
+    background-color: var(--cor-principal); 
+    color: var(--branco);
+}
+
+.cta-principal:hover {
+    background-color: #0d4812;
+    transform: translateY(-3px);
+}
+
+/* NOVO BOTÃO: Parceiro Empresarial (Destaque) */
+.cta-terciario {
+    background-color: var(--cor-destaque); 
+    color: var(--cor-principal);
+    font-weight: 800; 
+}
+
+.cta-terciario:hover {
+    background-color: #A5D6A7;
+    transform: translateY(-3px);
+}
+
+/* Botão secundário (Voluntário) */
+.cta-secundario {
+    background-color: transparent;
+    color: var(--cor-principal);
+    border: 2px solid var(--cor-principal);
+}
+
+.cta-secundario:hover {
+    background-color: var(--cor-principal);
+    color: var(--branco);
+    transform: translateY(-3px);
+}
+
+
+/* --- 7. RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+    .história-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .valor-row {
+        flex-direction: column;
+    }
+
+    .valor-row.reverse-row {
+        flex-direction: column; 
+    }
+
+    .valor-imagem img {
+        height: 300px;
+    }
+
+    .info-container {
+        flex-direction: column;
+    }
+
+    .cta-botoes button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+}

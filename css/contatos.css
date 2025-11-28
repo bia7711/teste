@@ -1,0 +1,153 @@
+/* Variáveis de Cores (Boas para manter a consistência!) */
+:root {
+    --bg-color: #6d9361; /* Verde musgo do fundo */
+    --text-dark: #333333;
+    --input-bg: #ffffff;
+    --btn-color: #558045; /* Verde mais escuro do botão */
+    --required-color: #ff0000; /* Vermelho para o asterisco */
+    --padding-sides: 60px; /* Padding padrão para os lados */
+}
+
+body {
+    /* Manter a cor de fundo no body, que é visível ao redor do container */
+    background-color: var(--bg-color); 
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* Container principal para o layout de duas colunas */
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o container */
+    background-color: var(--bg-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+    /* Margem superior para separar do menu NAV */
+    margin-top: 40px; 
+    margin-bottom: 40px;
+}
+
+/* --- Lado Esquerdo (Título e Descrição) --- */
+.left-side {
+    flex: 1;
+    padding: var(--padding-sides);
+    padding-right: 40px; /* Um pouco menos de padding na borda interna */
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.logo p {
+    font-size: 0.8em;
+    margin-top: 5px;
+    color: var(--text-dark);
+}
+
+.contact-info h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* --- Lado Direito (Formulário) --- */
+.right-side {
+    flex: 1.2; /* Dando um pouco mais de espaço para o formulário */
+    padding: var(--padding-sides);
+    /* Fundo levemente diferente ou transparente se preferir, para visual distinto */
+    background-color: #8bb3809e; 
+}
+
+/* Campos de Nome e Sobrenome na mesma linha */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-row .input-group {
+    flex: 1; /* Faz com que Nome e Sobrenome dividam a linha */
+}
+
+label {
+    font-size: 1em;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.required {
+    color: var(--required-color);
+    margin-left: 2px;
+}
+
+input[type="text"], 
+input[type="email"], 
+textarea {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    font-size: 1em;
+    width: 100%;
+    /* Estilo para simular a elevação/sombra da imagem do Figma */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4), 
+                -2px -2px 5px rgba(255, 255, 255, 0.5); 
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical; /* Permite redimensionar a altura, não a largura */
+}
+
+/* Botão Enviar */
+.submit-btn {
+    background-color: var(--btn-color);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.submit-btn:hover {
+    background-color: #4a6c3f; /* Tom levemente mais escuro no hover */
+    transform: translateY(-1px);
+}
+
+
+/* --- Media Query para Responsividade --- */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        width: 100%; 
+    }
+    
+    .left-side, .right-side {
+        padding: 40px 20px;
+    }
+
+    /* Empilha Nome e Sobrenome em telas pequenas */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

@@ -1,0 +1,273 @@
+/* ========================================= */
+/* ESTILOS GERAIS DE LAYOUT E CONTAINER */
+/* ========================================= */
+
+/* Garante que o corpo da página use toda a altura disponível */
+body {
+    background-color: #F8F8F8; /* Um cinza claro de fundo */
+    font-family: Arial, sans-serif; /* Use sua fonte preferida aqui */
+    margin: 0;
+    /* Ajuste o padding-top conforme a altura do seu cabeçalho (nav) */
+    padding-top: 0px; 
+}
+
+/* Container que centraliza o formulário */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o topo das caixas */
+    gap: 30px; /* Espaço entre as duas colunas */
+    padding: 30px 20px;
+    max-width: 1200px; /* Largura máxima para centralizar o conteúdo */
+    margin: 0 auto;
+}
+
+/* O formulário geral (usa flex para segurar as duas colunas lado a lado) */
+.doacao-form {
+    /* Define o container pai das duas etapas (etapa1 e etapa2) */
+    display: flex;
+    gap: 30px;
+}
+
+
+/* ========================================= */
+/* ESTILOS DA CAIXA DE CADA COLUNA (O 'MOLDURA VERDE') */
+/* ========================================= */
+
+.form-column {
+    background-color: #FFFFFF; /* Fundo branco para o conteúdo */
+    padding: 40px 30px;
+    border-radius: 25px; /* Bordas arredondadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra suave */
+    position: relative;
+    overflow: hidden; /* Importante para as imagens de fundo */
+    width: 380px; /* Largura fixa para manter o modelo */
+    min-height: 650px; /* Altura mínima para segurar o conteúdo */
+    border: 2px solid #A4D194; /* Borda verde clara */
+}
+
+/* Titulo 'Doe Agora' e subtítulos */
+.form-column h2 {
+    color: #4C9F38; /* Verde forte */
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.form-column .subtitle {
+    color: #333;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* ========================================= */
+/* ESTILOS DE BACKGROUND DAS PLANTAS (CRIATIVO) */
+/* 🚨 ATENÇÃO: SUBSTITUA OS CAMINHOS DAS IMAGENS ABAIXO 🚨 */
+/* ========================================= */
+
+.dados-pessoais {
+    /* Exemplo: imagem no canto superior e outra no inferior */
+    background-image: url('../img/planta-superior-direita.png'), url('../img/planta-inferior-esquerda.png'); 
+    background-repeat: no-repeat;
+    background-position: top 20px right 20px, bottom 20px left 20px;
+    background-size: 150px, 150px; 
+}
+
+.dados-doacao {
+    /* Exemplo: imagem no canto superior e outra no inferior */
+    background-image: url('../img/planta-superior-esquerda.png'), url('../img/planta-inferior-direita.png');
+    background-repeat: no-repeat;
+    background-position: top 20px left 20px, bottom 20px right 20px;
+    background-size: 150px, 150px; 
+}
+
+
+/* ========================================= */
+/* ESTILOS DE FORMULÁRIO GERAL */
+/* ========================================= */
+
+.input-group {
+    margin-bottom: 15px;
+    position: relative; 
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="tel"],
+.input-group input[type="date"],
+.input-group select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #DEDEDE;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    font-size: 1em;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #4C9F38; 
+    outline: none;
+}
+
+/* Para dividir inputs como Data de Nasc. e Sexo */
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+.form-row .input-group {
+    flex-grow: 1; 
+}
+
+/* ========================================= */
+/* ESTILOS DE ERRO/VALIDAÇÃO */
+/* ========================================= */
+
+/* Estilo da mensagem de erro */
+.error-message {
+    display: block;
+    color: #E34A4A; /* Vermelho vibrante para o erro */
+    font-size: 0.85em;
+    margin-top: 5px;
+    font-weight: bold;
+    visibility: hidden; /* Escondida até ser acionada pelo JS */
+    height: 0; /* Ocupa 0 espaço até ser visível */
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+/* Estilo para quando o JS torna a mensagem visível */
+.error-message.visible {
+    visibility: visible;
+    height: auto;
+    opacity: 1;
+    margin-bottom: 5px; /* Adiciona um pequeno espaço abaixo */
+}
+
+/* Destaca a borda do input com erro */
+.input-group input.error {
+    border-color: #E34A4A !important;
+}
+
+
+/* ========================================= */
+/* ESTILOS DE BOTÕES DE VALOR E RECORRÊNCIA */
+/* ========================================= */
+
+/* Oculta os radio buttons originais */
+.valor-options input[type="radio"],
+.recorrencia-options input[type="radio"] {
+    display: none;
+}
+
+.valor-options {
+    /* Garante o grid de 2 colunas */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.valor-box {
+    display: block;
+    text-align: center;
+    padding: 15px 10px;
+    border: 2px solid #A4D194;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #F0FFF0; 
+    transition: all 0.2s;
+}
+
+/* Estilo para quando o radio button está SELECIONADO */
+.valor-options input[type="radio"]:checked + .valor-box,
+.recorrencia-options input[type="radio"]:checked + .recorrencia-box {
+    background-color: #4C9F38; 
+    color: white;
+    border-color: #4C9F38;
+    box-shadow: 0 0 10px rgba(76, 159, 56, 0.5);
+}
+
+/* Estilos de recorrência (Mensal/Única) */
+.recorrencia-options {
+    /* Garante o flexbox para 2 botões lado a lado */
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+.recorrencia-box {
+    flex: 1;
+    display: block;
+    text-align: center;
+    padding: 15px 10px;
+    border: 2px solid #A4D194;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #F0FFF0;
+    transition: all 0.2s;
+}
+
+/* ========================================= */
+/* ESTILO DO BOTÃO DE SUBMISSÃO */
+/* ========================================= */
+
+.submit-btn.next-btn {
+    /* Novo estilo para o botão "Próximo" se precisar de uma cor diferente */
+    background-color: #6a9b58; 
+}
+
+.submit-btn.juntar-se, .submit-btn.next-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #5BA848; 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.submit-btn.juntar-se:hover, .submit-btn.next-btn:hover {
+    background-color: #4C9F38; 
+}
+
+.submit-btn.juntar-se:active, .submit-btn.next-btn:active {
+    transform: scale(0.99);
+}
+
+/* ========================================= */
+/* CHECKBOXES */
+/* ========================================= */
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.1);
+}
+
+.checkbox-group a {
+    color: #4C9F38;
+    text-decoration: none;
+}
+.checkbox-group a:hover {
+    text-decoration: underline;
+}

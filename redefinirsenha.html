@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Fluxo de Páginas</title>
+    <link rel="stylesheet" href="./css/redefinirsenha.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/responsivo.css">
+    
+</head>
+<body>
+    <nav>
+        <div>
+            <img src="./img/novalogo.png" alt="logo">
+        </div>
+        <div class="alinhamento">
+              <ul>
+                  <li><a href="./index.html">Home</a></li> 
+                <li><a href="./quemsomos.html">Quem somos</a></li>
+                <li><a href="./contatos.html">Contato</a></li>
+                <li><a href="./doacao.html">Doe</a></li>
+                <li><a href="./voluntarios.html">Voluntários</a></li>
+                <li><a href="entrarempresa.html">Empresas</a></li> 
+ 
+              </ul>
+          
+      </div>
+     </nav>
+    <div class="container">
+        <div id="page1" class="page active">
+            <h2>Esqueceu sua senha?</h2>
+            <p>Digite seu email ou nome de usuário:</p>
+            <input type="text" placeholder="Seu email ou usuário">
+            <button onclick="nextPage('page2')">Próximo</button>
+        </div>
+
+        <div id="page2" class="page">
+            <h2>Redefinir Senha</h2>
+            <p>Confirme seu email, por gentileza</p>
+            <input type="email" placeholder="Seu email">
+            <button onclick="nextPage('page3')">Próximo</button>
+            <button onclick="previousPage('page1')">Voltar</button>
+        </div>
+
+        <div id="page3" class="page">
+            <h2>Redefinir Senha</h2>
+            <p>Digite o código de verificação que enviamos para o seu email:</p>
+            <input type="text" placeholder="Código de verificação">
+            <input type="password" placeholder="Nova senha">
+            <input type="password" placeholder="Confirmar nova senha">
+            <button onclick="alert('Senha redefinida com sucesso!')">Confirmar</button>
+            <button onclick="previousPage('page2')">Voltar</button>
+        </div>
+    </div>
+
+    <script src="./js/redefinirsenha.js"></script>
+
+</body>
+</html>
