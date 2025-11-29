@@ -3,7 +3,6 @@
 // ------------------------------------------------------------------
 // Lógica para MUDANÇA DE ETAPAS E VALIDAÇÃO DE PRÓXIMO
 // ------------------------------------------------------------------
-// A função deve ser mantida fora de qualquer escopo para que o HTML a encontre
 function proximaEtapa() {
     const etapa1 = document.getElementById('etapa1');
     const etapa2 = document.getElementById('etapa2');
@@ -41,29 +40,45 @@ document.querySelectorAll('input[name="valorDoacao"]').forEach(radio => {
 // Lógica para ENVIO DOS DADOS (Comunicação com o Back-end)
 // ------------------------------------------------------------------
 const doacaoForm = document.getElementById('doacaoForm');
+const URL_BACKEND = 'http://localhost:3001/api/doacao/'; 
 
 doacaoForm.addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const formData = new FormData(doacaoForm);
     const dados = {};
+
+    // 1. Coleta e Filtra os dados (Exclui campos vazios e o campo "termos")
     formData.forEach((value, key) => {
-        if (value.trim() !== "") {
+        // Exclui o campo 'termos' pois ele não existe no modelo do BD
+        if (value.trim() !== "" && key !== 'termos') {
             dados[key] = value.trim();
         }
     });
     
+    // 2. Lógica para mapear o valor da doação para o padrão do Sequelize (valor_doacao)
     if (dados.valorDoacao === 'Outro' && dados.valorPersonalizado) {
-        dados.valorDoacao = dados.valorPersonalizado;
+        // Usa o valor personalizado e renomeia
+        dados.valor_doacao = dados.valorPersonalizado; 
+    } else if (dados.valorDoacao) {
+        // Usa o valor pré-selecionado e renomeia
+        dados.valor_doacao = dados.valorDoacao;
     }
+    
+    // Remove os campos temporários (que não estão no modelo do BD)
+    delete dados.valorDoacao;
     delete dados.valorPersonalizado;
     
-    const url = 'http://localhost:3001/api/doacao/registrar'; 
+    // 3. Adiciona o id_pagamento (se estiver faltando)
+    // ATENÇÃO: Se este campo for NOT NULL no BD, ele precisa de um valor válido!
+    if (!dados.id_pagamento) {
+        dados.id_pagamento = null; // Assume que o campo aceita NULL temporariamente
+    }
     
     console.log('Tentando enviar dados para o Back-end:', dados);
 
     try {
-        const response = await fetch(url, {
+        const response = await fetch(URL_BACKEND, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -71,20 +86,23 @@ doacaoForm.addEventListener('submit', async function(event) {
             body: JSON.stringify(dados)
         });
 
-        const resultado = await response.json();
+        // Tenta sempre ler o JSON da resposta
+        const resultado = await response.json(); 
 
         if (response.ok) {
-            alert('✅ DOAÇÃO RECEBIDA COM SUCESSO! ' + resultado.message);
+            alert('✅ DOAÇÃO RECEBIDA COM SUCESSO! ' + JSON.stringify(resultado));
             doacaoForm.reset(); 
             // Volta para a Etapa 1
             document.getElementById('etapa1').style.display = 'block';
             document.getElementById('etapa2').style.display = 'none';
         } else {
-            alert('❌ ERRO ao processar a doação: ' + (resultado.message || 'Erro desconhecido no servidor.'));
+            // O erro 500 ou 400 virá para cá, mostrando a mensagem do back-end
+            console.error('❌ ERRO do Servidor:', resultado);
+            alert('❌ ERRO ao processar a doação: ' + (resultado.errorDetails || resultado.message || 'Erro desconhecido no servidor.'));
         }
 
     } catch (error) {
-        console.error('⚠️ Erro de Rede/CORS. Verifique o console do navegador.', error);
-        alert('Erro de conexão com o servidor. Verifique se o Back-end está rodando e se há erro de CORS no console.');
+        console.error('⚠️ Erro de Rede. Verifique se o Back-end está rodando.', error);
+        alert('Erro de conexão com o servidor. Verifique se o Back-end está rodando na porta 3001.');
     }
 });
