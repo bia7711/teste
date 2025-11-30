@@ -67,7 +67,6 @@ body {
 
 .dados-pessoais {
     /* Exemplo: imagem no canto superior e outra no inferior */
-    background-image: url('../img/planta-superior-direita.png'), url('../img/planta-inferior-esquerda.png'); 
     background-repeat: no-repeat;
     background-position: top 20px right 20px, bottom 20px left 20px;
     background-size: 150px, 150px; 
@@ -75,7 +74,6 @@ body {
 
 .dados-doacao {
     /* Exemplo: imagem no canto superior e outra no inferior */
-    background-image: url('../img/planta-superior-esquerda.png'), url('../img/planta-inferior-direita.png');
     background-repeat: no-repeat;
     background-position: top 20px left 20px, bottom 20px right 20px;
     background-size: 150px, 150px; 

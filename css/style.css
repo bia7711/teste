@@ -1,61 +1,87 @@
-body {
-    background-image: url("../img/planodefundo.png");
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: center;
-
-    margin: 0;
-    min-height: 100vh; 
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+/* --- VARIAVEIS DE CORES ESSENCIAIS --- */
+/* Se você ainda não tem as variáveis de cor (variáveis CSS) 
+    definidas em algum lugar no topo do seu style.css, adicione-as:
+*/
+:root {
+    --cor-principal: #3a7d44; /* Exemplo de Verde Principal */
+    --cor-destaque: #65b891; /* Exemplo de Verde para Links/Botões */
+    --branco: #ffffff;
 }
 
-button {
-    background-color: #495824; 
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    margin-top: 20px; 
+/* --- FORMULÁRIOS PADRÃO (para criar.html e entrar.html) --- */
+
+.form-card {
+    max-width: 450px; /* Largura ideal */
+    margin: 40px auto; /* Centraliza */
+    padding: 30px 40px;
+    background-color: var(--branco);
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Efeito de cartão */
 }
 
-h1 {
+/* Título interno do formulário */
+.form-card h2 {
     text-align: center;
-    color: rgba(255, 255, 255, 0.719);
-    margin-bottom: 20px; 
+    font-size: 2em;
+    margin-bottom: 30px;
 }
 
-button:hover {
-    background-color: #202e03;
+/* Remove o risco/linha abaixo do título (como solicitado) */
+.form-card h2::after {
+    content: none; 
+    display: none;
 }
 
-main {
-    display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    height: 100%; 
-    max-width: 100%; 
-    text-align: center;
-    padding: 20px; 
-    position: absolute;
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
+/* Estilo dos campos */
+.input-group {
+    margin-bottom: 15px;
 }
-
-footer {
-    background-color: rgba(187, 183, 180, 0.438);
-    backdrop-filter: blur(5px);
-    color: black;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    position: fixed;
-    bottom: 0;
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--cor-principal);
+    font-size: 0.95em;
+}
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="date"] {
     width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+.input-group input:focus {
+    border-color: var(--cor-destaque);
+    outline: none;
+}
+
+/* Botão Principal (Aumentado, como solicitado) */
+.cta-principal {
+    display: block; 
+    padding: 18px 30px !important; 
+    font-size: 1.1em; 
+    background-color: var(--cor-destaque); 
+    color: var(--branco); 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+    width: 100%; /* Garante que preenche o espaço */
+}
+
+/* Links no Formulário (Verde e Sem Risco, como solicitado) */
+.form-card a {
+    color: var(--cor-destaque) !important; 
+    text-decoration: none; 
+    transition: text-decoration 0.3s;
+}
+
+.form-card a:hover {
+    text-decoration: underline; 
 }

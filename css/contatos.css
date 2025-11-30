@@ -9,7 +9,6 @@
 }
 
 body {
-    /* Manter a cor de fundo no body, que é visível ao redor do container */
     background-color: var(--bg-color); 
     margin: 0;
     font-family: Arial, sans-serif;
@@ -24,7 +23,6 @@ body {
     margin: 0 auto; /* Centraliza o container */
     background-color: var(--bg-color);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
-    /* Margem superior para separar do menu NAV */
     margin-top: 40px; 
     margin-bottom: 40px;
 }
@@ -33,7 +31,7 @@ body {
 .left-side {
     flex: 1;
     padding: var(--padding-sides);
-    padding-right: 40px; /* Um pouco menos de padding na borda interna */
+    padding-right: 40px;
     color: var(--text-dark);
     display: flex;
     flex-direction: column;
@@ -58,9 +56,8 @@ body {
 
 /* --- Lado Direito (Formulário) --- */
 .right-side {
-    flex: 1.2; /* Dando um pouco mais de espaço para o formulário */
+    flex: 1.2;
     padding: var(--padding-sides);
-    /* Fundo levemente diferente ou transparente se preferir, para visual distinto */
     background-color: #8bb3809e; 
 }
 
@@ -79,7 +76,7 @@ body {
 }
 
 .form-row .input-group {
-    flex: 1; /* Faz com que Nome e Sobrenome dividam a linha */
+    flex: 1;
 }
 
 label {
@@ -94,24 +91,27 @@ label {
     margin-left: 2px;
 }
 
+/* --- ESTILO DOS INPUTS CORRIGIDO --- */
 input[type="text"], 
 input[type="email"], 
 textarea {
-    padding: 15px;
-    border: none;
+    padding: 12px;
+    border: 1px solid #ccc; 
     border-radius: 5px;
     background-color: var(--input-bg);
     font-size: 1em;
     width: 100%;
-    /* Estilo para simular a elevação/sombra da imagem do Figma */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4), 
-                -2px -2px 5px rgba(255, 255, 255, 0.5); 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
     box-sizing: border-box;
+    min-height: 45px;
 }
 
 textarea {
-    resize: vertical; /* Permite redimensionar a altura, não a largura */
+    resize: vertical;
+    min-height: 150px;
 }
+/* --- FIM DO ESTILO DOS INPUTS CORRIGIDO --- */
+
 
 /* Botão Enviar */
 .submit-btn {
@@ -129,8 +129,25 @@ textarea {
 }
 
 .submit-btn:hover {
-    background-color: #4a6c3f; /* Tom levemente mais escuro no hover */
+    background-color: #4a6c3f;
     transform: translateY(-1px);
+}
+
+/* --- Rodapé --- */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #558045; 
+    color: white;
+    font-size: 0.9em;
+    width: 100%;
+    margin-top: 40px; 
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 

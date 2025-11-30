@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/empresasController");
+// ✅ CORREÇÃO: Usando 'empresasController' para corresponder ao nome do arquivo
+const EmpresaController = require("../controllers/empresasController"); 
 
-router.get("/", controller.listar);
-router.post("/", controller.criar);
-router.get("/:id", controller.buscar);
-router.put("/:id", controller.atualizar);
-router.delete("/:id", controller.deletar);
+router.get("/", EmpresaController.listar);
+router.post("/", EmpresaController.criar); 
+router.post("/login", EmpresaController.login); // 🔑 Rota de Login
+router.get("/:id", EmpresaController.buscar);
+router.put("/:id", EmpresaController.atualizar);
+router.delete("/:id", EmpresaController.deletar);
 
 module.exports = router;

@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
-const session = require('express-session');
+// 🗑️ Removido: const session = require('express-session'); // NÃO USA MAIS SESSÃO
 
 // Carregar variáveis de ambiente
 dotenv.config();
@@ -14,21 +14,17 @@ const PORT = process.env.PORT || 3001;
 
 // 3. Middlewares Globais
 
-// Configuração de Sessão
-app.use(session({
-    secret: process.env.SESSION_SECRET || 'chave_secreta_default',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { 
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 1000 * 60 * 60 * 24 // 1 dia
-    }
-}));
+// 🗑️ Removida a configuração de Sessão (Não é compatível com JWT)
+/* app.use(session({ ... }))
+*/
 
-// CORS
+// CORS (Simplificado e eficiente para JWT)
 app.use(cors({
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+    // Permite todas as origens (ou apenas as específicas como ['http://127.0.0.1:5500', 'http://localhost:5500'])
+    origin: '*', 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type', 'Authorization'], // 🔑 ESSENCIAL: Permite que o Front-end envie o JWT
+    credentials: false // 🗑️ Não precisa de credenciais de cookie/sessão
 }));
 
 // Body Parsers
@@ -43,7 +39,7 @@ app.use(express.static(frontendPath));
 // 5. Conectar ao Banco com Sequelize
 console.log("🔄 Conectando ao banco MySQL via Sequelize...");
 
-const { sequelize } = require('./models'); // Importa index.js dos models
+const { sequelize } = require('./models');
 
 sequelize.authenticate()
     .then(() => console.log("✅ Conexão com MySQL estabelecida!"))
@@ -51,7 +47,7 @@ sequelize.authenticate()
 
 
 // 6. Importar TODAS as rotas criadas
-const authRoutes = require('./routes/authRoutes');
+// 🗑️ Removido: const authRoutes = require('./routes/authRoutes'); // Arquivo deletado
 const contatoRoutes = require('./routes/contatoRoutes');
 const doacaoRoutes = require('./routes/doacaoRoutes');
 const voluntarioRoutes = require('./routes/voluntarioRoutes');
@@ -61,18 +57,24 @@ const administradorRoutes = require('./routes/administradorRoutes');
 const tipoPagamentoRoutes = require('./routes/tipoPagamentoRoutes');
 const pagamentoRoutes = require('./routes/pagamentoRoutes');
 
+// 🔑 Middleware de Autenticação JWT
+const authMiddleware = require('./middlewares/authMiddleware');
 
 // 7. Registrar rotas com prefixo /api
-app.use('/api/auth', authRoutes);
-app.use('/api/contato', contatoRoutes);
-app.use('/api/doacao', doacaoRoutes);
-app.use('/api/voluntarios', voluntarioRoutes);
+// Rotas Públicas (Login, Cadastro, Contato)
+app.use('/api/voluntarios', voluntarioRoutes); // Contém /login e /criar
+app.use('/api/empresas', empresasRoutes);      // Contém /login e /criar
+app.use('/api/contatos', contatoRoutes);      // Rota de contato (POST)
+app.use('/api/doacoes', doacaoRoutes);  //Rota de Doacoes
+
+// Rotas Protegidas (Exemplo: Tudo após o Login e Cadastro)
+// Todas as rotas abaixo requerem um Token JWT válido para acesso!
+app.use(authMiddleware); // Aplica o middleware JWT a TODAS as rotas a seguir!
+
 app.use('/api/perfil', perfilRoutes);
-app.use('/api/empresas', empresasRoutes);
 app.use('/api/administrador', administradorRoutes);
 app.use('/api/tipo-pagamento', tipoPagamentoRoutes);
 app.use('/api/pagamento', pagamentoRoutes);
-
 
 // 8. Iniciar servidor
 app.listen(PORT, () => {

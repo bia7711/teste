@@ -1,18 +1,35 @@
 module.exports = (sequelize, DataTypes) => {
   const Doacao = sequelize.define("Doacao", {
-    id_doacao: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-    nome: DataTypes.STRING,
-    email: DataTypes.STRING,
+    id_doacao: { 
+      type: DataTypes.INTEGER, 
+      autoIncrement: true, 
+      primaryKey: true 
+    },
+    nome: {
+      type: DataTypes.STRING, 
+      allowNull: false 
+    },
+    email: { 
+      type: DataTypes.STRING, 
+      allowNull: false 
+    },
     telefone: DataTypes.STRING,
     data_nascimento: DataTypes.DATE,
-    sexo: DataTypes.ENUM("Masculino", "Feminino", "Outro"),
+    sexo: DataTypes.STRING,
     como_ficou_sabendo: DataTypes.STRING,
-    valor_doacao: DataTypes.DECIMAL,
+    valor_doacao: { 
+      type: DataTypes.DECIMAL, 
+      allowNull: false 
+    },
     id_pagamento: DataTypes.INTEGER,
-    created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
   }, {
     tableName: "doacao",
-    timestamps: false
+
+    // Aqui vem a mágica:
+    timestamps: true,       // ainda cria createdAt automaticamente
+    createdAt: 'created_at',
+    updatedAt: false,
+    underscored: true
   });
 
   return Doacao;

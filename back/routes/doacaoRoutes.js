@@ -1,8 +1,10 @@
-const express = require("express");
-const router = express.Router();
-const controller = require("../controllers/doacaoController");
+// back/routes/doacaoRoutes.js
 
-router.post("/", controller.criar);
-router.get("/", controller.listar);
+const express = require('express');
+const router = express.Router();
+const doacaoController = require('../controllers/doacaoController');
+
+// Rota AGORA PÚBLICA: Não exige Token JWT
+router.post('/', doacaoController.criar); // ⬅️ authMiddleware REMOVIDO
 
 module.exports = router;
