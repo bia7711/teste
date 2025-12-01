@@ -1,47 +1,75 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up - Tempo de Florescer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/entrarecriar.css">
+    <title>Tempo de Florescer</title>
+
+    <!-- MESMO CSS DO CADASTRO -->
+    <link rel="stylesheet" href="./css/entrarecriarempresas.css">
     <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="./css/responsivo.css">
 </head>
+
 <body>
+
     <nav>
         <div>
             <img src="./img/novalogo.png" alt="logo">
         </div>
+
         <div class="alinhamento">
             <ul>
-                <li><a href="./index.html">Home</a></li> 
+                <li><a href="./index.html">Home</a></li>
                 <li><a href="./quemsomos.html">Quem somos</a></li>
                 <li><a href="./contatos.html">Contato</a></li>
                 <li><a href="./doacao.html">Doe</a></li>
-                <li><a href="./voluntarios.html">voluntárias</a></li>
-                <li><a href="./entrarempresa.html">Empresas</a></li> 
+                <li><a href="./voluntario.html">Voluntários</a></li>
+                <li><a href="./entrarempresa.html" class="active">Empresas</a></li>
             </ul>
         </div>
     </nav>
-    <div class="alinhamentocontainer">
-        <div class="signup-container">
-            <h2>Entrar</h2>
-            <div class="input-group">
-                <label for="Cnpj">CNPJ:</label>
-                <input type="email" id="Cnpj" name="Cnpj" placeholder="Seu Cnpj">
+
+    <!-- PADRONIZAÇÃO COMEÇA AQUI -->
+    <div class="container">
+        <div class="form-card">
+
+            <div class="form-header">
+                <h2>Entrar na conta</h2>
             </div>
-            <div class="input-group">
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" placeholder="Sua senha">
+
+            <form id="loginEmpresaForm">
+
+                <div class="input-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="nome@empresa.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                </div>
+
+                <div class="checkbox-group" style="display: flex; align-items: center; gap: 8px;">
+                    <input type="checkbox" id="termos">
+                    <label for="termos">Concordo com os Termos e Condições</label>
+                </div>
+
+                <button type="submit" class="btn-register">
+                    Entrar
+                </button>
+
+            </form>
+
+            <div class="form-footer">
+                <p>Não tem uma conta? <a href="./criarempresas.html">Cadastre-se</a></p>
+                <a href="./redefinirsenha.html">Esqueceu a senha?</a>
             </div>
-            <div style="display: flex; align-items: center;">
-                <input type="checkbox" id="termos">
-                <label for="termos">Eu concordo com os <a href="./termos.html" target="_blank">Termos e Condições</a></label>
-            </div>
-            <button type="submit">Entrar</button>
-            <p class="terms">Não tem uma conta? <a href="./criarempresas.html">Faça cadastro</a></p>
+
         </div>
     </div>
+
 </body>
+<script src="./js/LoginEmpresa.js"></script>
+
 </html>

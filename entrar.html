@@ -3,53 +3,67 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up - Tempo de Florescer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Tempo de Florescer</title>
+
     <link rel="stylesheet" href="./css/entrarecriar.css">
     <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="./css/responsivo.css">
 </head>
 
 <body>
-     <nav>
+
+    <nav>
         <div>
-           <img src="./img/novalogo.png" alt="logo">
-             </div>
-           <div class="alinhamento">
+            <img src="./img/novalogo.png" alt="logo">
+        </div>
+
+        <div class="alinhamento">
             <ul>
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./quemsomos.html">Quem somos</a></li>
                 <li><a href="./contatos.html">Contato</a></li>
-                 <li><a href="./doacao.html">Doe</a></li>
-                <li><a href="./voluntarios.html">Voluntários</a></li>
-                <li><a href="entrarempresa.html">Empresas</a></li>
-                
-                </ul>
-           
-             </div>
-        </nav>
-    <div class="alinhamentocontainer">
-         <div class="signup-container">
-             <h2>Entrar</h2>
-             <div class="input-group">
-                 <label for="email">Email:</label>
-                 <input type="email" id="email" name="email" placeholder="Seu email">
-               </div>
-            <div class="input-group">
-                 <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" placeholder="Sua senha">
-               </div>
-            <div style="display: flex; align-items: center;">
-                 <input type="checkbox" id="termos">
-                 <label for="termos">Eu concordo com os <a href="./termos.html" target="_blank">Termos e
-                        Condições</a></label>
-            </div>
-           <button type="submit">Entrar</button>
-             <p class="terms">Não tem uma conta? <a href="./criar.html">Faça cadastro</a></p>
-             </div>
-
+                <li><a href="./doacao.html">Doe</a></li>
+                <li><a href="./voluntario.html">Voluntários</a></li>
+                <li><a href="./entrarempresa.html">Empresas</a></li>
+            </ul>
         </div>
-    <script src="./js/login.js"></script>
-</body>
+    </nav>
 
+    <div class="alinhamentocontainer">
+        <form id="formLogin" class="signup-container">
+
+            <h2>Entrar</h2>
+
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Seu email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" placeholder="Sua senha" required>
+            </div>
+
+            <div class="checkbox-row">
+                <input type="checkbox" id="termos">
+                <label for="termos">
+                    Eu concordo com os
+                    <a href="./termos.html" target="_blank">Termos e Condições</a>
+                </label>
+            </div>
+
+            <div id="mensagemFeedback" class="text-center mt-4 p-2"></div>
+
+            <button type="submit">Entrar</button>
+
+            <p class="terms">
+                Não tem uma conta?
+                <a href="./criar.html">Faça cadastro</a>
+            </p>
+
+        </form>
+    </div>
+
+</body>
+<script src="./js/entrarvoluntario.js"></script>
 </html>

@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
     <title>Doação</title>
-    <link rel="stylesheet" href="./css/doacao.css"> 
+    <link rel="stylesheet" href="./css/doacao.css">
     <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="./css/responsivo.css">
 </head>
+
 <body>
-    
+
     <nav>
         <div>
             <img src="./img/novalogo.png" alt="Logo da organização">
         </div>
         <div class="alinhamento">
             <ul>
-                <li><a href="./index.html">Home</a></li> 
+                <li><a href="./index.html">Home</a></li>
                 <li><a href="./quemsomos.html">Quem somos</a></li>
                 <li><a href="./contatos.html">Contato</a></li>
                 <li><a href="./doacao.html">Doe</a></li>
-                <li><a href="./voluntarios.html">Voluntários</a></li>
-                <li><a href="entrarempresa.html">Empresas</a></li> 
+                <li><a href="./voluntario.html">Voluntários</a></li>
+                <li><a href="./entrarempresa.html">Empresas</a></li>
             </ul>
         </div>
     </nav>
@@ -32,7 +36,7 @@
 
             <div id="etapa1" class="form-column dados-pessoais">
                 <h2>Doe Agora</h2>
-                
+
                 <div class="input-group">
                     <label for="nome">Nome *</label>
                     <input type="text" id="nome" name="nome" required>
@@ -49,7 +53,7 @@
                     <label for="telefone">Número de telefone</label>
                     <input type="tel" id="telefone" name="telefone">
                 </div>
-                
+
                 <div class="form-row split-inputs">
                     <div class="input-group">
                         <label for="dataNascimento">Data de Nascimento</label>
@@ -80,13 +84,14 @@
                     <input type="checkbox" id="comunicacoes" name="comunicacoes">
                     <label for="comunicacoes">Sim, por favor. Desejo receber essas comunicações.</label>
                 </div>
-                
+
                 <div class="checkbox-group">
                     <input type="checkbox" id="termos" name="termos" required>
-                    <label for="termos">Estou de acordo com as <a href="#">Políticas de Privacidade</a>.</label>
+                    <label for="termos">Estou de acordo com as <a href=>Políticas de Privacidade</a>.</label>
                 </div>
-                
-                <button type="button" class="submit-btn next-btn" onclick="window.proximaEtapa()">Próximo: Detalhes da Doação</button>
+
+                <button type="button" class="submit-btn next-btn" onclick="window.proximaEtapa()">Próximo: Detalhes da
+                    Doação</button>
             </div>
 
 
@@ -107,12 +112,12 @@
                     <input type="radio" id="outroValor" name="valorDoacao" value="Outro">
                     <label for="outroValor" class="valor-box outro-valor">Outro Valor..</label>
                 </div>
-                
+
                 <div class="input-group" id="outro-valor-input" style="display:none;">
                     <label for="valorPersonalizado">Digite o valor que deseja doar (R$)</label>
                     <input type="number" id="valorPersonalizado" name="valorPersonalizado" min="1" step="0.01">
                 </div>
-                
+
                 <div class="recorrencia-options">
                     <input type="radio" id="recorrenciaMensal" name="recorrencia" value="Mensal" required>
                     <label for="recorrenciaMensal" class="recorrencia-box mensal">Mensal</label>
@@ -135,12 +140,49 @@
                         <option value="pix">PIX</option>
                     </select>
                 </div>
-                
+
                 <button type="submit" class="submit-btn juntar-se">DOAR</button>
             </div>
+
+            <div id="sucessEtapa" class="form-column dados-doacao" style="display:none;">
+                <h2>Doação realizada com sucesso!</h2>
+                <p class="subtitle">Sua generosidade fará a diferença! Agradecemos imensamente pela sua contribuição.
+                </p>
+
+                <!-- Imagem de sucesso -->
+                <div class="success-image">
+                    <img src="https://img.icons8.com/ios11/512/40C057/ok.png" alt="Sucesso">
+                </div>
+
+                <!-- Mensagem extra de agradecimento -->
+                <p class="mensagem-extra">Você ajudou a transformar vidas! Agora, continue acompanhando as nossas ações
+                    e o impacto da sua doação.</p>
+
+                <button type="button" onclick="voltar()" class="submit-btn voltar">Voltar à página inicial</button>
+            </div>
+
+            <div id="failEtapa" class="form-column dados-doacao" style="display:none;">
+                <h2>Ops! Algo deu errado...</h2>
+                <p class="subtitle">Tivemos um pequeno problema ao processar a sua doação. Por favor, tente novamente.
+                </p>
+
+                <!-- Imagem de erro -->
+                <div class="fail-image">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5219/5219070.png" alt="Erro">
+                </div>
+
+                <!-- Mensagem de incentivo -->
+                <p class="mensagem-extra">Não se preocupe, estamos aqui para ajudar. Tente novamente e, caso o problema
+                    persista, entre em contato com o suporte.</p>
+
+                <button type="button" onclick="voltar()" class="submit-btn tentar-novamente">Tentar novamente</button>
+            </div>
+
+
         </form>
     </div>
-    
-    <script src="js/doacao.js"></script> 
+
+    <script src="js/doacao.js"></script>
 </body>
+
 </html>

@@ -3,9 +3,20 @@
 // ------------------------------------------------------------------
 // Lógica para MUDANÇA DE ETAPAS E VALIDAÇÃO DE PRÓXIMO
 // ------------------------------------------------------------------
+
+const etapa1 = document.getElementById('etapa1');
+const etapa2 = document.getElementById('etapa2');
+const sucessEtapa = document.getElementById('sucessEtapa');
+const failEtapa = document.getElementById('failEtapa');
+
+function voltar() {
+    etapa1.style.display = 'block';
+    etapa2.style.display = 'none';
+    sucessEtapa.style.display = 'none';
+    failEtapa.style.display = 'none';
+}
+
 function proximaEtapa() {
-    const etapa1 = document.getElementById('etapa1');
-    const etapa2 = document.getElementById('etapa2');
 
     // 1. Validação dos campos obrigatórios da Etapa 1
     const nome = document.getElementById('nome').value.trim();
@@ -109,16 +120,20 @@ doacaoForm.addEventListener('submit', async function(event) {
             console.log('✅ DOAÇÃO RECEBIDA COM SUCESSO! ' + JSON.stringify(resultado));
             doacaoForm.reset(); 
             // Volta para a Etapa 1
-            document.getElementById('etapa1').style.display = 'block';
-            document.getElementById('etapa2').style.display = 'none';
+            etapa2.style.display = 'none';
+            sucessEtapa.style.display = 'block';
         } else {
             // Se o Back-end retornar um erro (400, 500, etc.)
             console.error('❌ ERRO do Servidor:', resultado);
             console.log('❌ ERRO ao processar a doação: ' + (resultado.errorDetails || resultado.message || 'Erro desconhecido no servidor.'));
-        }
+            etapa2.style.display = 'none';
+            failEtapa.style.display = 'block';
+    }
 
     } catch (error) {
         console.error('⚠️ Erro de Rede. Verifique se o Back-end está rodando.', error);
         alert('Erro de conexão com o servidor. Verifique se o Back-end está rodando na porta 3001.');
+        etapa2.style.display = 'none';
+        failEtapa.style.display = 'block';
     }
 });

@@ -1,32 +1,56 @@
-body{
-    font-family: 'Segoe UI', sans-serif;
-}
-
+/* ========================================================= */
+/* NAV - Padrão Geral do Site */
 nav {
-    background-color: rgba(187, 183, 180, 0.438);
-    backdrop-filter: blur(5px);
+    background-color: #ffffff;
+    border-bottom: 2px solid #A4D194;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+
+    padding: 10px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
+/* Logo */
+nav img {
+    height: 75px;
+    width: auto;
+}
+
+/* Lista de links */
 nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align:left;
     display: flex;
-    
-}
- 
-nav ul a {
-    color: black;
-    margin: 0 20px;
-
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
 }
 
-nav img {
-    height: 80px;
-    width: auto;
+/* Estilo dos links */
+nav ul li a {
+    text-decoration: none;
+    color: #2b3e1d;
+    font-weight: 600;
+    font-size: 1rem;
+
+    padding: 6px 10px;
+    border-radius: 6px;
+
+    transition: 0.25s ease;
+}
+
+/* Hover – mesmo verde padrão */
+nav ul li a:hover {
+    background-color: #4C9F38;
+    color: white;
+}
+
+/* Link ativo (caso precise usar) */
+nav ul li a.active {
+    background-color: #4C9F38;
+    color: white;
 }

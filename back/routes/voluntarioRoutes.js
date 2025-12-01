@@ -1,15 +1,21 @@
+// routes/voluntarioRoutes.js
 const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/voluntarioController");
-const authMiddleware = require("../middlewares/authMiddleware"); // 🔑 Se você tiver um middleware para rotas protegidas
+const authMiddleware = require("../middlewares/authMiddleware");
 
-router.post("/login", controller.login); // 🔑 CRÍTICO: Rota de Login Adicionada
+// Cadastro e login
+router.post("/", controller.criar);
+router.post("/login", controller.login);
 
-// Rotas CRUD padrão (Opcional: Proteja-as com authMiddleware)
-router.get("/", controller.listar); 
-router.post("/", controller.criar); 
+// CRUD básico
+router.get("/", controller.listar);
 router.get("/:id", controller.buscar);
-router.put("/:id", controller.atualizar);
-router.delete("/:id", controller.deletar);
+
+// Perfil do voluntário (protegido)
+router.get("/perfil/me", authMiddleware, controller.perfil);
+
+// Inscrever em ação (protegido)
+router.post("/acoes/:id/inscrever", authMiddleware, controller.inscrever);
 
 module.exports = router;

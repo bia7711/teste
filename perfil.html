@@ -3,46 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil - Tempo de Florescer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Tempo de Florescer</title>
     <link rel="stylesheet" href="./voluntarios.css"> 
-    <link rel="stylesheet" href="./perfil.css"> 
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/perfil.css"> 
 </head>
 <body>
-
-    <header class="header">
         <nav>
             <div>
                 <img src="./img/novalogo.png" alt="Logo da organização"> 
             </div>
-            <div id="navContainer" class="alinhamento"></div>
+            <div id="navContainer" class="alinhamento">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./quemsomos.html">Quem somos</a></li>
+                    <li><a href="./contatos.html">Contato</a></li>
+                    <li><a href="./doacao.html">Doe</a></li>
+                    <li><a href="./voluntario.html" class="active">Voluntários</a></li>
+                    <li><a href="./entrarempresa.html">Empresas</a></li>
+                </ul>
+            </div>
         </nav>
-    </header>
+
     <main class="profile-main">
         <div class="profile-container">
 
+            <!-- DADOS DO USUÁRIO -->
             <section class="profile-details">
                 <h2>Meus Dados Cadastrais</h2>
                 <div id="profileData" class="data-card">
-                    <p><strong>Nome Completo:</strong> <span id="data-name">Carregando...</span></p>
-                    <p><strong>E-mail:</strong> <span id="data-email">Carregando...</span></p>
-                    <p><strong>Telefone:</strong> <span id="data-phone">Carregando...</span></p>
-                    <p><strong>Cidade:</strong> <span id="data-city">Carregando...</span></p>
-                    <p><strong>Habilidades:</strong> <span id="data-skills">Carregando...</span></p>
+                    <p><strong>Nome Completo:</strong> <span id="data-name">Exemplo</span></p>
+                    <p><strong>E-mail:</strong> <span id="data-email">Exemplo@email.com</span></p>
+                    <p><strong>Telefone:</strong> <span id="data-phone">(11) 99999-9999</span></p>
+                    <p><strong>Cidade:</strong> <span id="data-city">São Paulo</span></p>
+                    <p><strong>Habilidades:</strong> <span id="data-skills">Organização de eventos, Comunicação, Marketing</span></p>
                     <button id="btnEditProfile" class="btn-edit">Editar Dados</button>
                 </div>
             </section>
 
+            <!-- CANDIDATURAS -->
             <section class="applications-list">
                 <h2>Minhas Candidaturas para Voluntariado</h2>
                 <div id="applicationsContainer" class="applications-cards">
-                    <p id="loadingApplications">Carregando candidaturas...</p>
+                    
+                    <div class="application-card">
+                        <p><strong>Projeto:</strong> Campanha de Doação de Alimentos</p>
+                        <p><strong>Data de Inscrição:</strong> 15/11/2025</p>
+                        <p><strong>Status:</strong> Aprovado</p>
+                        <button id="btndetails" class="btn-edit">Ver detalhes</button>
+                    </div>
+
+                    <div class="application-card">
+                        <p><strong>Projeto:</strong> Limpeza de Praias</p>
+                        <p><strong>Data de Inscrição:</strong> 22/11/2025</p>
+                        <p><strong>Status:</strong> Pendente</p>
+                        <button id="btndetails" class="btn-edit">Ver detalhes</button>
+                    </div>
+
+                    <div class="application-card">
+                        <p><strong>Projeto:</strong> Oficinas Educacionais</p>
+                        <p><strong>Data de Inscrição:</strong> 28/11/2025</p>
+                        <p><strong>Status:</strong> Rejeitado</p>
+                        <button id="btndetails" class="btn-edit">Ver detalhes</button>
+                    </div>
+
                 </div>
             </section>
 
         </div>
     </main>
 
-    <script src="./perfil.js"></script> 
 </body>
+<script src="./js/perfil.js"></script>
 </html>

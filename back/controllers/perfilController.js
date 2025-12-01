@@ -1,65 +1,41 @@
-const { Perfil, Voluntario } = require("../models");
+const { Voluntario, Acao, Inscricao } = require('../models'); // Ajuste conforme suas tabelas
 
 module.exports = {
- listar: async (req, res) => {
- try {
-  const dados = await Perfil.findAll({ 
-  include: [{
-   model: Voluntario,
-   attributes: { exclude: ['senha'] } // 🔒 Excluir senha
-  }] 
-  });
-  res.json(dados);
- } catch (err) {
-  res.status(500).json({ error: "Erro ao listar perfis." });
- }
- },
+    me: async (req, res) => {
+        try {
+            const voluntarioId = req.user.id; // definido pelo authMiddleware
 
- criar: async (req, res) => {
- try {
-  const novo = await Perfil.create(req.body);
-  res.status(201).json(novo);
- } catch (err) {
-             // Retorna 400 para erros de validação
-            if (err.name === 'SequelizeValidationError' || err.name === 'SequelizeUniqueConstraintError') {
-                return res.status(400).json({ error: "Dados inválidos ou perfil duplicado." });
+            // Busca dados do voluntário (excluindo senha)
+            const voluntario = await Voluntario.findByPk(voluntarioId, {
+                attributes: { exclude: ['senha'] },
+                include: [
+                    {
+                        model: Inscricao, // tabela que relaciona voluntário com ações
+                        include: [
+                            {
+                                model: Acao, // dados da ação
+                                attributes: ['id', 'nome', 'descricao']
+                            }
+                        ]
+                    }
+                ]
+            });
+
+            if (!voluntario) {
+                return res.status(404).json({ error: 'Voluntário não encontrado.' });
             }
-  res.status(500).json({ error: "Erro ao criar perfil." });
- }
- },
 
- buscar: async (req, res) => {
- try {
-  const dado = await Perfil.findByPk(req.params.id, { 
-  include: [{
-   model: Voluntario,
-   attributes: { exclude: ['senha'] } // 🔒 Excluir senha
-  }]
-  });
-  res.json(dado);
- } catch (err) {
-  res.status(500).json({ error: "Erro ao buscar perfil." });
- }
- },
+            // Mapeia as candidaturas
+            const acoes_inscritas = voluntario.Inscricaos || []; 
 
- atualizar: async (req, res) => {
- try {
-  const dado = await Perfil.findByPk(req.params.id);
-  if (!dado) return res.status(404).json({ error: "Não encontrado" });
-  await dado.update(req.body);
-  res.json(dado);
- } catch (err) {
-  res.status(400).json({ error: "Erro ao atualizar perfil." });
- }
- },
+            res.json({
+                ...voluntario.toJSON(),
+                acoes_inscritas
+            });
 
- deletar: async (req, res) => {
- try {
-  const dado = await Perfil.findByPk(req.params.id);
-  await dado.destroy();
-  res.json({ message: "Deletado" });
- } catch (err) {
-  res.status(500).json({ error: "Erro ao deletar perfil." });
- }
- }
+        } catch (error) {
+            console.error('Erro ao buscar perfil:', error);
+            res.status(500).json({ error: 'Erro interno ao buscar perfil.' });
+        }
+    }
 };

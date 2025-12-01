@@ -1,52 +1,117 @@
-
 body {
     line-height: 1.6;
-    margin: 20px;
-    background-color: #f4f4f4;
-    color: #333;
+    margin: 0;
+    padding: 20px;
+
     background-image: url("../img/planodefundo.png");
     background-repeat: no-repeat;
-    background-size:cover; 
-    background-position:center; 
-    backdrop-filter: blur(1.5px);
+    background-size: cover;
+    background-position: center;
+
+    background-color: #f4f4f4;
+    backdrop-filter: blur(3px);
+
     display: flex;
-    flex: 1;
     flex-direction: column;
+    min-height: 100vh;
+    color: #2b3e1d; /* verde escuro suave */
 }
+
+/* ========================================================= */
+/* CONTAINER */
 .container {
     max-width: 800px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    background: rgba(255, 255, 255, 0.85); /* igual ao voluntários */
+    padding: 35px;
+    border-radius: 14px;
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
+
+/* ========================================================= */
+/* TÍTULOS */
 h1, h2 {
-    color: #45610e;
+    color: #45610e; /* verde do voluntários */
+    font-weight: 700;
 }
+
 h1 {
     text-align: center;
     margin-bottom: 30px;
+    font-size: 32px;
 }
+
 h2 {
     margin-top: 20px;
-    border-bottom: 2px solid #ccc;
     padding-bottom: 5px;
+    border-bottom: 2px solid #c8d4b3; /* borda mais suave, tom verde */
 }
+
+/* ========================================================= */
+/* TEXTO */
 p {
     margin-bottom: 15px;
+    color: #2b3e1d;
 }
+
 ul {
     margin-bottom: 15px;
     padding-left: 20px;
 }
+
 li {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
+
+/* ========================================================= */
+/* LINKS */
 a {
-    color:#45610e;
+    color: #45610e;
+    font-weight: 600;
     text-decoration: none;
 }
+
 a:hover {
     text-decoration: underline;
+    color: #38500a;
+}
+
+/* ========================================================= */
+/* ESTILOS DO BOTÃO DE VOLTAR */
+.botao-voltar-container {
+    text-align: center;
+    padding-top: 30px; /* Espaço entre o último parágrafo e o botão */
+    margin-top: 20px; /* Espaço antes do contêiner */
+    border-top: 1px solid #c8d4b3; /* Uma linha de separação sutil */
+}
+
+.botao-voltar {
+    /* Cores: Usando o verde do título (#45610e) como cor principal */
+    background-color: #45610e; 
+    color: #ffffff;
+    border: 2px solid #45610e;
+    
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1em;
+}
+
+.botao-voltar:hover {
+    /* Efeito de hover: Inverte para o verde claro com borda, mantendo o contraste */
+    background-color: transparent; 
+    color: #45610e; 
+    border-color: #45610e; 
+    transform: translateY(-3px);
+}
+
+.botao-voltar i {
+    margin-right: 8px;
 }

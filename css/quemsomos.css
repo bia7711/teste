@@ -1,4 +1,3 @@
-/* --- 1. VARIÁVEIS E RESET BÁSICO --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,10 +5,9 @@
 }
 
 :root {
-    /* Paleta de Cores de Alto Contraste */
-    --cor-principal: #1B5E20; /* Verde Floresta (mais profundo e forte) */
-    --cor-destaque: #66BB6A;  /* Verde Folha (vibrante para links e ícones) */
-    --cor-fundo-suave: #F0FFF0; /* Fundo suave geral (Quase branco, mas não puro) */
+    --cor-principal: #1B5E20; 
+    --cor-destaque: #66BB6A;  
+    --cor-fundo-suave: #F0FFF0; 
     --cor-texto: #333333;
     --branco: #ffffff;
     --sombra-leve: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -25,7 +23,6 @@ body {
     min-height: 100vh;
 }
 
-/* Tipografia */
 h1, h2, h3 {
     font-family: 'Montserrat', sans-serif; 
     font-weight: 700;
@@ -37,22 +34,22 @@ strong {
     color: var(--cor-destaque);
 }
 
-/* --- ESTILO DO HEADER (O seu "quadrado esticado" com o título) --- */
+
 header {
-    width: 100%; /* LARGURA TOTAL */
-    padding: 20px 20px; /* BOM ESPAÇO INTERNO/ALTURA */
-    background-color: var(--cor-fundo-suave); /* Fundo suave para contraste */
+    width: 100%;
+    padding: 20px 20px; 
+    background-color: var(--cor-fundo-suave); 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); 
-    text-align: center; /* CENTRALIZA o título */
+    text-align: center; 
 }
 
 header h1 {
-    font-size: 3em; /* Título bem grande e visível */
+    font-size: 3em; 
     margin: 0;
     color: var(--cor-principal);
 }
 
-/* Estilos de Layout Full Width (Reutilizável) */
+
 main {
     flex-grow: 1;
     width: 100%;
@@ -64,12 +61,12 @@ main {
 }
 
 .content-wrapper {
-    max-width: 1100px; /* Limite do conteúdo interno */
+    max-width: 1100px; 
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Títulos das Seções (H2) */
+
 h2 {
     font-size: 2.2em; 
     margin-bottom: 30px;
@@ -283,6 +280,11 @@ p {
     background-color: var(--cor-destaque);
 }
 
+/* Correção para o contêiner dos botões ser clicável */
+.cta-botoes {
+    pointer-events: auto; 
+}
+
 .cta-botoes button {
     padding: 15px 30px;
     border: none;
@@ -319,14 +321,23 @@ p {
 
 /* Botão secundário (Voluntário) */
 .cta-secundario {
-    background-color: transparent;
-    color: var(--cor-principal);
+    /* ***** CORREÇÃO DE APARÊNCIA: Fundo sólido para ser visível ***** */
+    background-color: var(--cor-principal); /* Agora é verde sólido */
+    color: var(--branco); /* Cor do texto branca */
     border: 2px solid var(--cor-principal);
+    
+    
+    position: relative !important;
+    z-index: 10 !important;
+    pointer-events: auto !important;
 }
 
 .cta-secundario:hover {
-    background-color: var(--cor-principal);
-    color: var(--branco);
+    
+    background-color: #4CAF50; 
+    color: var(--branco); 
+    border: 2px solid #4CAF50; 
+    
     transform: translateY(-3px);
 }
 

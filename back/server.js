@@ -64,8 +64,8 @@ const authMiddleware = require('./middlewares/authMiddleware');
 // Rotas Públicas (Login, Cadastro, Contato)
 app.use('/api/voluntarios', voluntarioRoutes); // Contém /login e /criar
 app.use('/api/empresas', empresasRoutes);      // Contém /login e /criar
-app.use('/api/contatos', contatoRoutes);      // Rota de contato (POST)
 app.use('/api/doacoes', doacaoRoutes);  //Rota de Doacoes
+app.use('/api/contatos', contatoRoutes); //Rota de Contatos
 
 // Rotas Protegidas (Exemplo: Tudo após o Login e Cadastro)
 // Todas as rotas abaixo requerem um Token JWT válido para acesso!

@@ -1,11 +1,9 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const controller = require("../controllers/perfilController");
+const perfilController = require('../controllers/perfilController');
+const authMiddleware = require('../middlewares/authMiddleware');
 
-router.get("/", controller.listar);
-router.post("/", controller.criar);
-router.get("/:id", controller.buscar);
-router.put("/:id", controller.atualizar);
-router.delete("/:id", controller.deletar);
+// 🔑 Rota protegida: retorna os dados do voluntário logado
+router.get('/me', authMiddleware, perfilController.me);
 
 module.exports = router;

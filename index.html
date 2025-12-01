@@ -6,21 +6,20 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="./css/responsivo.css">
-    
 </head>
 <body>
     <nav>
         <div class="logo">
             <img src="./img/novalogo.png" alt="logo">
         </div>
-        <div class="alinhamento">
+        <div id="navContainer" class="alinhamento">
             <ul>
-                <li><a href="./index.html">Home</a></li> 
+                <li><a href="./index.html" class="active">Home</a></li> 
                 <li><a href="./quemsomos.html">Quem somos</a></li>
                 <li><a href="./contatos.html">Contato</a></li>
                 <li><a href="./doacao.html">Doe</a></li>
-                <li><a href="./voluntarios.html">Voluntários</a></li>
-                <li><a href="entrarempresa.html">Empresas</a></li> 
+                <li><a href="./voluntario.html">Voluntários</a></li>
+                <li><a href="./entrarempresa.html">Empresas</a></li>
             </ul>
         </div>
     </nav>
@@ -33,10 +32,70 @@
             </a>
         </div>
     </main>
+
     <footer>
         <p>2025 - Tempo de Florescer. Todos os direitos reservados</p>
         <p>Entre em contato pelo email: institutotempodeflorescer@gmail.com</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const NAV_CONTAINER = document.getElementById('navContainer');
+
+            // Menu Estático
+            const menuEstaticoLinks = `
+                <li><a href="./index.html" class="active">Home</a></li>
+                <li><a href="./quemsomos.html">Quem somos</a></li>
+                <li><a href="./contatos.html">Contato</a></li>
+                <li><a href="./doacao.html">Doe</a></li>
+                <li><a href="./voluntarios.html">Voluntários</a></li>
+                <li><a href="./entrarempresa.html">Empresas</a></li>
+            `;
+
+            // Menu para usuário logado
+            const menuLogadoHTML = (voluntarioId, nomeVoluntario) => `
+                <ul>
+                    <li><a href="./index.html" class="active">Home</a></li>
+                    <li><a href="./quemsomos.html">Quem somos</a></li>
+                    <li><a href="./contatos.html">Contato</a></li>
+                    <li><a href="./doacao.html">Doe</a></li>
+                    <li><a href="./voluntarios.html">Voluntários</a></li>
+                    <li><a href="./perfil.html?id=${voluntarioId}">👤 Perfil (${nomeVoluntario.split(' ')[0]})</a></li>
+                    <li><a href="#" id="btnLogout">Sair</a></li>
+                </ul>
+            `;
+
+            // Função de logout
+            const setupLogout = () => {
+                const btnLogout = document.getElementById('btnLogout');
+                if (btnLogout) {
+                    btnLogout.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        localStorage.removeItem('token');
+                        window.location.reload();
+                    });
+                }
+            };
+
+            // Verifica login
+            const verificarEcarregarNav = () => {
+                try {
+                    const token = localStorage.getItem('token');
+                    if (token) {
+                        const payload = JSON.parse(atob(token.split('.')[1]));
+                        NAV_CONTAINER.innerHTML = menuLogadoHTML(payload.id, payload.nome || 'Voluntário');
+                        setupLogout();
+                    } else {
+                        NAV_CONTAINER.innerHTML = `<ul>${menuEstaticoLinks}</ul>`;
+                    }
+                } catch (error) {
+                    console.error(error);
+                    NAV_CONTAINER.innerHTML = `<ul>${menuEstaticoLinks}</ul>`;
+                }
+            };
+
+            verificarEcarregarNav();
+        });
+    </script>
 </body>
 </html>

@@ -1,61 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Empresas/Investidores - Tempo de Florescer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Tempo de Florescer</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./css/entrarecriarempresas.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/responsivo.css">
+    <link rel="stylesheet" href="./css/nav.css">
 
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Tempo de Florescer</h1>
-            <nav>
-                <ul>
-            <li><a href="./index.html">Home</a></li> 
+    <nav>
+        <div>
+            <img src="./img/novalogo.png" alt="logo">
+        </div>
+        <div class="alinhamento">
+            <ul>
+                <li><a href="./index.html">Home</a></li>
                 <li><a href="./quemsomos.html">Quem somos</a></li>
                 <li><a href="./contatos.html">Contato</a></li>
                 <li><a href="./doacao.html">Doe</a></li>
-                <li><a href="./voluntarios.html">Voluntários</a></li>
-                <li><a href="entrarempresa.html">Empresas</a></li> 
-                </ul>
-            </nav>
+                <li><a href="./voluntario.html">Voluntários</a></li>
+                <li><a href="./entrarempresas.html">Empresas</a></li>
+            </ul>
         </div>
+    </nav>
+    <div class="container">
         <div class="form-card">
             <div class="form-header">
                 <h2>Não tem uma conta? Crie uma!</h2>
             </div>
-            <form action="/register/empresa" method="POST"> 
+            <form id="registerForm">
                 <div class="input-group">
                     <label for="nomeEmpresa">Nome da Empresa/Investidor:</label>
-                    <input type="text" id="nomeEmpresa" name="nomeEmpresa" placeholder="Digite o nome da empresa" required>
+                    <input type="text" id="nomeEmpresa" name="nomeEmpresa" placeholder="Digite o nome da empresa"
+                        required>
                 </div>
                 <div class="input-group">
                     <label for="cnpj">CNPJ:</label>
-                    <input type="text" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX" pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}" title="Formato: XX.XXX.XXX/XXXX-XX" required>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX"
+                        pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}" title="Formato: XX.XXX.XXX/XXXX-XX" required>
                 </div>
                 <div class="input-group">
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" placeholder="nome@empresa.com" required>
                 </div>
                 <div class="input-group">
+                    <label for="endereco">Endereço Comercial:</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro..." required>
+                </div>
+                <div class="input-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" id="telefone" name="telefone" placeholder="(XX) 99999-9999" required>
+                </div>
+
+                <div class="input-group">
                     <label for="password">Senha:</label>
                     <input type="password" id="password" name="senha" placeholder="Crie uma senha" required>
                 </div>
                 <div class="input-group">
                     <label for="confirm_password">Confirmar Senha:</label>
-                    <input type="password" id="confirm_password" name="confirmaSenha" placeholder="Confirme sua senha" required>
+                    <input type="password" id="confirm_password" name="confirmaSenha" placeholder="Confirme sua senha"
+                        required>
                 </div>
                 <div style="display: flex; align-items: center;">
-            <input type="checkbox" id="termos">
-            <label for="termos">Concordo com os Termos e Condições</label>
-        </div>
+                    <input type="checkbox" id="termos">
+                    <label for="termos">Concordo com os Termos e Condições</label>
+                </div>
                 <button type="submit" class="btn-register">Registrar</button>
             </form>
-            
+
             <div class="form-footer">
                 <p>Já tem uma conta? <a href="./entrarempresa.html">Faça login</a></p>
                 <a href="./redefinirsenha.html">Esqueceu a senha?</a>
@@ -63,4 +82,6 @@
         </div>
     </div>
 </body>
+<script src="./js/CadastrarEmpresa.js"></script>
+
 </html>

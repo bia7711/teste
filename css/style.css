@@ -1,3 +1,79 @@
+
+/* ========================================================= */
+/* BACKGROUND */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+
+    background-image: url("../img/planodefundo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* ========================================================= */
+/* MAIN CENTRALIZADO */
+main {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+/* ========================================================= */
+/* TÍTULO */
+h1 {
+    color: #ffffff;
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* ========================================================= */
+/* BOTÃO – padrão das páginas */
+button {
+    background-color: #5BA848;
+    color: white;
+
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+
+    margin-top: 20px;
+
+    transition: background-color 0.25s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #4C9F38;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* ========================================================= */
+/* FOOTER */
+footer {
+    background-color: #ffffff;
+    border-top: 2px solid #A4D194;
+    color: #2b3e1d;
+    text-align: center;
+    padding: 12px;
+    font-size: 0.9em;
+
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
 /* --- VARIAVEIS DE CORES ESSENCIAIS --- */
 /* Se você ainda não tem as variáveis de cor (variáveis CSS) 
     definidas em algum lugar no topo do seu style.css, adicione-as:
@@ -54,6 +130,7 @@
     border-radius: 5px;
     font-size: 1em;
     transition: border-color 0.3s;
+
 }
 .input-group input:focus {
     border-color: var(--cor-destaque);

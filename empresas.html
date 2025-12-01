@@ -1,78 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candidatos Ativos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./empresas.css">
-    <link rel="stylesheet" href="./css/responsivo.css">
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tempo de Florescer</title>
+  <link rel="stylesheet" href="./css/empresas.css" />
+  <link rel="stylesheet" href="./css/nav.css" />
+  <link rel="stylesheet" href="./css/responsivo.css" />
 </head>
+
 <body>
+  <nav>
+    <div>
+      <img src="./img/novalogo.png" alt="Logo da organização" />
+    </div>
+    <div id="navContainer" class="alinhamento">
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./quemsomos.html">Quem somos</a></li>
+        <li><a href="./contatos.html">Contato</a></li>
+        <li><a href="./doacao.html">Doe</a></li>
+        <li><a href="./voluntario.html">Voluntários</a></li>
+        <li><a href="./entrarempresa.html" class="active">Empresas</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<div class="container">
+  <main class="company-main">
+    <div class="company-container">
+      <!-- DADOS DA EMPRESA -->
+      <section class="company-details">
+        <h2>Dados da Empresa</h2>
+        <div class="data-card">
+          <p><strong>Nome da Empresa:</strong> <span id="empresaNome"></span></p>
+          <p><strong>CNPJ:</strong> <span id="empresaCnpj"></span></p>
+          <p><strong>E-mail:</strong> <span id="empresaEmail"></span></p>
+          <p><strong>Telefone:</strong> <span id="empresaTelefone"></span></p>
+          <p><strong>Endereço:</strong> <span id="empresaEndereco"></span></p>
 
-   
-    <main class="content">
-        <h1>Candidatos Ativos</h1>
+          <button class="btn-edit">Editar Dados</button>
+        </div>
+        <!-- VAGAS ATIVAS -->
+        <div class="active-jobs">
+          <h2>Vagas Ativas</h2>
+          <button class="btn-add-job">Adicionar Vaga</button>
+          <div class="job-cards">
+            <div class="job-card">
+              <h3>Auxiliar de Reflorestamento</h3>
+              <p><strong>Descrição:</strong> Apoio em plantio de árvores e manutenção de áreas verdes.</p>
+              <p><strong>Status:</strong> Aberta</p>
+              <button>Ver Detalhes</button>
+            </div>
 
+            <div class="job-card">
+              <h3>Coordenador de Projetos Ambientais</h3>
+              <p><strong>Descrição:</strong> Planejamento e coordenação de projetos de sustentabilidade.</p>
+              <p><strong>Status:</strong> Aberta</p>
+              <button>Ver Detalhes</button>
+            </div>
+
+            <div class="job-card">
+              <h3>Voluntário de Campo</h3>
+              <p><strong>Descrição:</strong> Participação em atividades de reflorestamento e educação ambiental.</p>
+              <p><strong>Status:</strong> Aberta</p>
+              <button>Ver Detalhes</button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+
+      <!-- CANDIDATOS -->
+      <section class="candidates-list">
+        <h2>Candidatos Ativos</h2>
         <div class="filters">
-            <select>
-                <option>Filtrar por Vaga</option>
-            </select>
-
-            <select>
-                <option>Filtrar por Status</option>
-            </select>
-
-            <input type="text" placeholder="Buscar...">
+          <select>
+            <option>Filtrar por Vaga</option>
+          </select>
+          <select>
+            <option>Filtrar por Status</option>
+          </select>
+          <input type="text" placeholder="Buscar..." />
         </div>
 
         <div class="cards">
-
-          
-            <div class="card">
-                <img src="../voluntariafernanda.png" class="photo">
+          <div class="card">
+            <div class="card-header">
+              <img src="./img/voluntariafernanda.png" class="photo" />
+              <div class="card-info">
                 <h3>Fernanda Vasconcellos</h3>
                 <span class="tag">Reflorestamento e Campo</span>
-
-                <p><strong>Vaga cadastrada:</strong> 1 mês atrás</p>
-                <button>Ver Dados e Contato</button>
+              </div>
             </div>
+            <p><strong>Vaga cadastrada:</strong> 1 mês atrás</p>
+            <button>Ver Dados e Contato</button>
+          </div>
 
-           
-            <div class="card">
-                <img src="../voluntarioandre.png" class="photo">
+          <div class="card">
+            <div class="card-header">
+              <img src="./img/voluntarioandre.png" class="photo" />
+              <div class="card-info">
                 <h3>André Marinho</h3>
                 <span class="tag">Reflorestamento e Campo</span>
-
-                <p><strong>Habilidades:</strong> várias</p>
-                <button>Ver Dados e Contato</button>
+              </div>
             </div>
+            <p><strong>Habilidades:</strong> várias</p>
+            <button>Ver Dados e Contato</button>
+          </div>
 
- 
-            <div class="card">
-                <img src="../voluntariosamuel.png" class="photo">
+          <div class="card">
+            <div class="card-header">
+              <img src="./img/voluntariosamuel.png" class="photo" />
+              <div class="card-info">
                 <h3>Samuel Almeida</h3>
                 <span class="tag">Reflorestamento e Campo</span>
-
-                <p><strong>Experiência:</strong> 1 ano</p>
-                <button>Ver Dados e Contato</button>
+              </div>
             </div>
-             <div class="card">
-                <img src="../voluntarialuisa.png" class="photo">
+            <p><strong>Experiência:</strong> 1 ano</p>
+            <button>Ver Dados e Contato</button>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <img src="./img/voluntarialuisa.png" class="photo" />
+              <div class="card-info">
                 <h3>Luísa Akissue</h3>
                 <span class="tag">Reflorestamento e Campo</span>
-
-                <p><strong>Habilidades:</strong> várias</p>
-                <button>Ver Dados e Contato</button>
+              </div>
             </div>
-
+            <p><strong>Habilidades:</strong> várias</p>
+            <button>Ver Dados e Contato</button>
+          </div>
         </div>
-    </main>
-
-</div>
-
+      </section>
+    </div>
+  </main>
 </body>
+<script src="./js/Empresas.js"></script>
 </html>

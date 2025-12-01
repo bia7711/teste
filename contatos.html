@@ -1,113 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/contatos.css">
-    <link rel="stylesheet" href="./css/nav.css">
-    <link rel="stylesheet" href="./css/responsivo.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+
+    <!-- Seus estilos -->
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/responsivo.css">
+    <link rel="stylesheet" href="./css/contatos.css">
 </head>
+
 <body>
-    
-    <nav>
-        <div>
-            <img src="./img/novalogo.png" alt="logo">
-        </div>
-        <div class="alinhamento">
-            <ul>
-                <li><a href="./index.html">Home</a></li> 
-                <li><a href="./quemsomos.html">Quem somos</a></li>
-                <li><a href="./contatos.html">Contato</a></li>
-                <li><a href="./doacao.html">Doe</a></li>
-                <li><a href="./voluntarios.html">Voluntários</a></li>
-                <li><a href="entrarempresa.html">Empresas</a></li> 
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
-        
-        <div class="left-side">
-            <div class="logo">
-                <p>TEMPO DE FLORESCER</p>
-            </div>
-            
-            <div class="contact-info">
-                <h1>Fale conosco</h1>
-                <p>Preencha os campos ao lado e envie suas dúvidas e sugestões, entraremos em contato em breve! Será um prazer falar com você.</p>
-            </div>
-        </div>
 
-        <div class="right-side">
-            <form id="contactForm">
-                
-                <div class="form-row">
-                    <div class="input-group">
-                        <label for="nome">Nome<span class="required">*</span></label>
-                        <input type="text" id="nome" name="nome" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="sobrenome">Sobrenome<span class="required">*</span></label>
-                        <input type="text" id="sobrenome" name="sobrenome" required>
-                    </div>
-                </div>
+    <!-- NAVBAR -->
+    <nav>
+        <div>
+            <img src="./img/novalogo.png" alt="logo">
+        </div>
+        <div class="alinhamento">
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./quemsomos.html">Quem somos</a></li>
+                <li><a href="./contatos.html">Contato</a></li>
+                <li><a href="./doacao.html">Doe</a></li>
+                <li><a href="./voluntario.html">Voluntários</a></li>
+                <li><a href="./entrarempresas.html">Empresas</a></li>
+            </ul>
+        </div>
+    </nav>
 
-                <div class="input-group">
-                    <label for="email">E-mail<span class="required">*</span></label>
-                    <input type="email" id="email" name="email" required>
-                </div>
+    <!-- HEADER GRANDE COMO O CSS MODELO -->
+    <header>
+        <h1>Fale Conosco</h1>
+    </header>
 
-                <div class="input-group">
-                    <label for="mensagem">Mensagem<span class="required">*</span></label>
-                    <textarea id="mensagem" name="mensagem" rows="8" required></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">
-                    Enviar
-                </button>
+    <!-- CONTEÚDO -->
+    <div class="contato-container">
 
-            </form>
-        </div>
-    </div>
-    <div class="footer">
-        <p>&copy; 2025 - Todos os direitos reservados | <a href="mailto:contato@exemplo.com">institutotempodeflorescer@gmail.com</a></p>
-    </div>
+        <div class="contato-info">
+            <h2>Estamos aqui para te ouvir</h2>
+            <p>
+                Envie suas dúvidas, sugestões ou mensagens.
+                Nossa equipe entrará em contato o mais breve possível.
+            </p>
+        </div>
 
-    <script>
-        const form = document.getElementById('contactForm'); 
+        <div class="form-card">
+            <form id="contactForm">
+                <div id="formularioContato">
+                    <div class="input-group">
+                        <label for="nome">Nome *</label>
+                        <input id="nome" name="nome" type="text" required>
+                    </div>
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+                    <div class="input-group">
+                        <label for="sobrenome">Sobrenome *</label>
+                        <input id="sobrenome" name="sobrenome" type="text" required>
+                    </div>
 
-            const data = {
-                nome: form.nome.value,
-                sobrenome: form.sobrenome.value,
-                email: form.email.value,
-                mensagem: form.mensagem.value
-            };
+                    <div class="input-group">
+                        <label for="email">E-mail *</label>
+                        <input id="email" name="email" type="email" required>
+                    </div>
 
-            try {
-                // ROTA AJUSTADA para o padrão /api/contatos
-                const response = await fetch('http://localhost:3001/api/contatos', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data),
-                });
+                    <div class="input-group">
+                        <label for="mensagem">Mensagem *</label>
+                        <textarea id="mensagem" name="mensagem" rows="8" required></textarea>
+                    </div>
 
-                if (response.ok) {
-                    alert('Mensagem enviada com sucesso!');
-                    form.reset();
-                } else {
-                    const errorData = await response.json();
-                    alert('Erro ao enviar mensagem: ' + (errorData.error || response.statusText));
-                }
-            } catch (error) {
-                alert('Erro na conexão com o servidor. Verifique o terminal Node.js.');
-            }
-        });
-    </script>
+                    <button type="submit" class="submit-btn">Enviar</button>
+                </div>
+
+                <div id="mensagemSucesso" class="msg-status sucesso" style="display:none;">
+                    <h2>Mensagem enviada com sucesso!</h2>
+                    <p>Agradecemos o seu contato! Nossa equipe retornará o mais breve possível.</p>
+
+                    <div class="img-status">
+                        <img src="https://img.icons8.com/ios11/512/40C057/ok.png" alt="Sucesso">
+                    </div>
+
+                    <p class="extra">Enquanto isso, fique à vontade para explorar nossos outros serviços.</p>
+
+                    <button type="button" class="submit-btn" onclick="novaMensagem()">Enviar outra mensagem</button>
+                </div>
+
+
+                <div id="mensagemErro" class="msg-status erro" style="display:none;">
+                    <h2>Não foi possível enviar sua mensagem!</h2>
+                    <p>Ocorreu um problema ao processar sua solicitação. Por favor, tente novamente.</p>
+
+                    <div class="img-status">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5219/5219070.png" alt="Erro">
+                    </div>
+
+                    <p class="extra">Caso o problema persista, entre em contato diretamente pelo e-mail abaixo.</p>
+
+                    <button type="button" class="submit-btn" onclick="tentarNovamente()">Tentar novamente</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 - Todos os direitos reservados |
+            <a href="mailto:institutotempodeflorescer@gmail.com">
+                institutotempodeflorescer@gmail.com
+            </a>
+        </p>
+    </footer>
+
+    <script src="./js/contatos.js"></script>
 
 </body>
 </html>
